@@ -1,0 +1,19 @@
+The following CSS code snippet exhibits an uncommon error related to specificity and inheritance:
+
+```css
+.container {
+  font-size: 16px;
+}
+
+.container p {
+  color: blue;
+}
+
+p {
+  font-size: 18px !important;
+}
+```
+
+The issue arises when you have nested elements and try to override the `font-size` using `!important`.  While `!important` is typically used to break specificity rules, in this instance it unexpectedly doesn't fully override the inherited `font-size` from the `.container` class.  The `p` element inherits the `font-size: 16px` from `.container`, even with the `!important` declaration. The expected behavior would be for the `p` element to have a `font-size: 18px`.
+
+This happens because the inheritance happens before the `!important` rule is applied, leading to a surprising result. In cases like this, it's necessary to also apply `!important` to the `.container` class if you need the change to completely override the inherited style.
