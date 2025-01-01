@@ -1,0 +1,25 @@
+To solve this issue, we need to explicitly set the `font-size` on the `p` element and also use the `!important` flag on both the `.container` class and the `p` selector to ensure the desired `font-size` takes precedence:
+
+```css
+.container {
+  font-size: 16px !important;
+}
+
+.container p {
+  color: blue;
+  font-size: 18px !important;
+}
+```
+
+Alternatively, a more robust approach to avoid unexpected behavior with `!important` would be to restructure the CSS and use more specific selectors. This makes your CSS more maintainable and less prone to unpredictable outcomes. For example, you can create a more specific class name for the paragraph to style it without relying on inheritance:
+
+```css
+.container {
+  font-size: 16px;
+}
+
+.container .special-paragraph {
+  color: blue;
+  font-size: 18px;
+}
+```
